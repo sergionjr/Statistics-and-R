@@ -28,3 +28,15 @@ plot(qs, props)
 props = sapply(qs, function(q) mean(x <= q))
 
 plot(ecdf(x))
+
+##--------------------------------------Start of Central Limit Theorem--------------------------------------------
+
+#Notes: 
+
+library(downloader) 
+url <- "https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/mice_pheno.csv"
+filename <- basename(url)
+download(url, destfile=filename)
+dat <- na.omit( read.csv(filename) )
+
+pnorm(dat)
