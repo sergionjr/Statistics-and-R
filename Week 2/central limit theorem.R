@@ -95,3 +95,5 @@ qqline(avgs)
 
 mean(avgs)
 popsd(avgs)
+
+qqnorm(X)
