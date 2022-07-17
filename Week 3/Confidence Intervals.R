@@ -103,3 +103,7 @@ t.test(dat.ns, dat.s)$p.value
 })
 
 mean(rejectionsim <= 0.01)
+
+pval <- 1-(pnorm(abs(tval))-pnorm(-abs(tval)))
+2*pnorm(-abs(tval))
+        
