@@ -35,3 +35,15 @@ sd(X)
 
 ## Standard Error (XBAR - YBAR) = standard deviation of x^ 2 / sample size + ...
 ((sd(X)^2)/12 + (sd(Y)^2)/12) %>% sqrt()
+
+## T-stat
+(mean(Y) - mean(X)) / sqrt(var(X)/12 + var(Y)/12)
+# or..
+t.test(Y,X)
+
+1 - pt(3,df=3)
+1 - pt(3,df=15)
+1 - pt(3,df=30)
+1 - pnorm(3)
+
+t.test(Y, X)
