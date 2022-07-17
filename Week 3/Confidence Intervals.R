@@ -73,3 +73,33 @@ dat.s = sample(bwt.smoke, 5)
 t.test(dat.ns, dat.s)
 
 ## Power Calculations Exercises
+url <- "https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/babies.txt"
+filename <- basename(url)
+download(url, destfile=filename)
+babies <- read.table("babies.txt", header=TRUE)
+
+bwt.nonsmoke <- filter(babies, smoke==0) %>% select(bwt) %>% unlist 
+bwt.smoke <- filter(babies, smoke==1) %>% select(bwt) %>% unlist
+
+mean(bwt.nonsmoke) - mean(bwt.smoke)
+popsd(bwt.nonsmoke)
+popsd(bwt.smoke)
+
+set.seed(1)
+N = 5
+
+dat.ns = sample(bwt.nonsmoke, N)
+dat.s = sample(bwt.smoke, N)
+
+t.test(dat.ns, dat.s)
+set.seed(1)
+
+N = 90
+rejectionsim = vector("numeric", 1000)
+rejectionsim = replicate(1000, {
+dat.ns = sample(bwt.nonsmoke, N)
+dat.s = sample(bwt.smoke, N)
+t.test(dat.ns, dat.s)$p.value
+})
+
+mean(rejectionsim <= 0.01)
